@@ -1,0 +1,24 @@
+html,
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: Helvetica, sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 3rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+}
+
+/*# sourceMappingURL=index.css.map */

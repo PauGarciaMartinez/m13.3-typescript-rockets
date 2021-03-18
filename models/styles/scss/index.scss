@@ -1,0 +1,30 @@
+// GLOBAL
+html, 
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: Helvetica, sans-serif;
+}
+
+// LAYOUT
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+// HEADER
+.title {
+  font-size: 3rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+}
+
+// GROUND CONTROL
+.buttons-container {
+  
+}
