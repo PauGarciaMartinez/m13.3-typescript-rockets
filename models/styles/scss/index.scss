@@ -16,15 +16,34 @@ body {
 }
 
 // HEADER
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(236, 214, 143);
+  width: 100%;
+  padding-bottom: 1rem;
+}
 .title {
+  color: rgb(56, 41, 1);
   font-size: 3rem;
+  margin-bottom: 0
 }
 
 .subtitle {
+  color: rgb(110, 74, 15);
   font-size: 1.2rem;
 }
 
 // SYSTEM CONTROL
+.ground-control {
+  border: 3px solid rgba(110, 74, 15, 0.178);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
 .control-container {
   display: flex;
   direction: row;
@@ -44,7 +63,7 @@ button {
   border-radius: 0.5rem;
   outline: none;
   font-weight: 600;
-  color: rgb(71, 61, 2);
+  color: rgb(56, 41, 1);
 }
 
 button:hover {
