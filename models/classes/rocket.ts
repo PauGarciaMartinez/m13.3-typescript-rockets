@@ -6,7 +6,10 @@ export class Rocket {
       this.propellant = propellant;
     }
 
-    calcTotalPower(){}
+    calcTotalPower(){
+      const totalPower = this.propellant.reduce((a, b) => a + b);
+      return totalPower;
+    }
 
     speedUp() {}
 
