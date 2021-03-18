@@ -24,7 +24,29 @@ body {
   font-size: 1.2rem;
 }
 
-// GROUND CONTROL
-.buttons-container {
-  
+// SYSTEM CONTROL
+.control-container {
+  display: flex;
+  direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
+
+h4 {
+  text-align: center;
+}
+
+button {
+  padding: 1rem;
+  border: 0px solid black;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+

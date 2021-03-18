@@ -5,7 +5,7 @@ export class ListTemplate {
 
   render(rocket: Rocket) {
     const li = document.createElement('li');
-    li.innerText = 'Output:';
+    li.innerText = 'Info:';
 
     const rocketInfo = document.createElement('p');
     rocketInfo.innerText = `${rocket.id}: ${rocket.propellant.toString()}`;
