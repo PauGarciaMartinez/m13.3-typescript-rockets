@@ -4,13 +4,10 @@ export class ListTemplate {
   constructor(private container: HTMLUListElement) {}
 
   render(rocket: Rocket) {
-    const li = document.createElement('li');
-    li.innerText = 'Info:';
 
     const rocketInfo = document.createElement('p');
-    rocketInfo.innerText = `${rocket.id}: ${rocket.propellant.toString()}`;
+    rocketInfo.innerText = `Rocket ${rocket.id} boosters max speed: ${rocket.propellant.toString()}`;
 
-    li.append(rocketInfo);
-    this.container.append(li);
+    this.container.append(rocketInfo);
   }
 }

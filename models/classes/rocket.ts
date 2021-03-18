@@ -11,7 +11,9 @@ export class Rocket {
       return totalPower;
     }
 
-    speedUp() {}
+    speedUp() {
+      
+    }
 
     speedDown() {}
 }

@@ -7,7 +7,8 @@ var Rocket = /** @class */ (function () {
         var totalPower = this.propellant.reduce(function (a, b) { return a + b; });
         return totalPower;
     };
-    Rocket.prototype.speedUp = function () { };
+    Rocket.prototype.speedUp = function () {
+    };
     Rocket.prototype.speedDown = function () { };
     return Rocket;
 }());

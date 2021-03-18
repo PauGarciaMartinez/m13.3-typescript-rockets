@@ -3,12 +3,9 @@ var ListTemplate = /** @class */ (function () {
         this.container = container;
     }
     ListTemplate.prototype.render = function (rocket) {
-        var li = document.createElement('li');
-        li.innerText = 'Info:';
         var rocketInfo = document.createElement('p');
-        rocketInfo.innerText = rocket.id + ": " + rocket.propellant.toString();
-        li.append(rocketInfo);
-        this.container.append(li);
+        rocketInfo.innerText = "Rocket " + rocket.id + " boosters max speed: " + rocket.propellant.toString();
+        this.container.append(rocketInfo);
     };
     return ListTemplate;
 }());
