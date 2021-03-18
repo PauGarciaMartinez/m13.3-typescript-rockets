@@ -43,10 +43,33 @@ button {
   border: 0px solid black;
   border-radius: 0.5rem;
   outline: none;
+  font-weight: 600;
+  color: rgb(71, 61, 2);
 }
 
 button:hover {
   cursor: pointer;
+}
+
+.launcher-btn {
+  background-color: rgb(236, 214, 143);
+}
+.launcher-btn:hover {
+  background-color: rgb(255, 224, 123);
+}
+
+.engine-btn {
+  background-color: rgba(236, 214, 143, 0.575);
+}
+.engine-btn:hover {
+  background-color: rgba(255, 223, 119, 0.575);
+}
+
+.data-btn {
+  background-color: rgba(236, 214, 143, 0.308);
+}
+.data-btn:hover {
+  background-color: rgba(255, 224, 123, 0.308);
 }
 
 
