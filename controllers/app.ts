@@ -9,9 +9,9 @@ const rocketURSS: Rocket = new Rocket('LDSFJA32', [30, 40, 50, 50, 30, 10]);
 const ul = document.querySelector('ul') as HTMLUListElement;
 const output = new ListTemplate(ul);
 
-/* output.render(rocketUSA);
+output.render(rocketUSA);
 output.render(rocketURSS);
 
-console.log(rocketURSS.calcTotalPower()); */
+console.log(rocketURSS.calcTotalPower());
 
 // EVENTS

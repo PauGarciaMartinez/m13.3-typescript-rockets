@@ -6,8 +6,7 @@ var rocketURSS = new Rocket('LDSFJA32', [30, 40, 50, 50, 30, 10]);
 // OUTPUT
 var ul = document.querySelector('ul');
 var output = new ListTemplate(ul);
-/* output.render(rocketUSA);
+output.render(rocketUSA);
 output.render(rocketURSS);
-
-console.log(rocketURSS.calcTotalPower()); */
+console.log(rocketURSS.calcTotalPower());
 // EVENTS
