@@ -51,4 +51,6 @@ infoURSS.addEventListener('click', function (e) {
 var infoAll = document.querySelector('#data3');
 infoAll.addEventListener('click', function (e) {
     e.preventDefault();
+    var allRockets = [rocketUSA, rocketURSS];
+    output.renderBoth(allRockets);
 });

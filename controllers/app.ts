@@ -63,4 +63,6 @@ infoURSS.addEventListener('click', (e: Event) => {
 const infoAll = document.querySelector('#data3') as HTMLButtonElement;
 infoAll.addEventListener('click', (e: Event) => {
   e.preventDefault();
+  const allRockets: Rocket[] = [rocketUSA, rocketURSS];
+  output.renderBoth(allRockets);
 })
