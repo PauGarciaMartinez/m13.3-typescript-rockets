@@ -15,26 +15,31 @@ var Rocket = /** @class */ (function () {
         if (this.power < this.totalPower) {
             if (this.increments === 0) {
                 this.power += 30;
-                this.increments = 1;
+                this.increments += 1;
             }
             else if (this.increments === 1) {
                 this.power += 20;
-                this.increments = 2;
+                this.increments += 1;
             }
             else if (this.increments === 2) {
                 this.power += 20;
-                this.increments = 3;
+                this.increments += 1;
             }
-            else if (this.increments === 3) {
+            else if (this.increments >= 3) {
                 this.power += 10;
+                this.increments += 1;
             }
         }
         return this.power;
     };
     Rocket.prototype.slowDown = function () {
         if (this.power > 0) {
-            if (this.increments >= 3) {
+            if (this.increments > 3) {
                 this.power -= 10;
+                this.increments -= 1;
+            }
+            else if (this.increments === 3) {
+                this.power -= 20;
                 this.increments -= 1;
             }
             else if (this.increments === 2) {

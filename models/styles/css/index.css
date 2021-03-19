@@ -99,6 +99,11 @@ button:hover {
   background-color: rgba(255, 224, 123, 0.308);
 }
 
+.rockets-info {
+  text-align: center;
+  padding: 0;
+}
+
 @media only screen and (max-width: 1100px) {
   .operations-container {
     grid-template-columns: 1fr;
