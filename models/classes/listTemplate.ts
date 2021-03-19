@@ -6,7 +6,7 @@ export class ListTemplate {
   render(rocket: Rocket) {
 
     const rocketInfo = document.createElement('p');
-    rocketInfo.innerText = `Rocket ${rocket.id} boosters max speed: ${rocket.propellant.toString()}`;
+    rocketInfo.innerHTML = `Rocket <strong>${rocket.id}</strong> boosters max speed: <strong>${rocket.boosters.toString()}</strong>`;
 
     this.container.append(rocketInfo);
   }

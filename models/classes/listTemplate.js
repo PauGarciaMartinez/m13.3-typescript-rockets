@@ -4,7 +4,7 @@ var ListTemplate = /** @class */ (function () {
     }
     ListTemplate.prototype.render = function (rocket) {
         var rocketInfo = document.createElement('p');
-        rocketInfo.innerText = "Rocket " + rocket.id + " boosters max speed: " + rocket.propellant.toString();
+        rocketInfo.innerHTML = "Rocket <strong>" + rocket.id + "</strong> boosters max speed: <strong>" + rocket.boosters.toString() + "</strong>";
         this.container.append(rocketInfo);
     };
     return ListTemplate;
