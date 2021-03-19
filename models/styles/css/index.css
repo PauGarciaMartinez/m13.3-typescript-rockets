@@ -27,21 +27,40 @@ body {
   background-color: #ecd68f;
   width: 100%;
   padding-bottom: 1rem;
+  z-index: 0;
 }
 
 .title {
   color: #382901;
   font-size: 3rem;
   margin-bottom: 0;
+  z-index: 2;
 }
 
 .subtitle {
-  color: #6e4a0f;
+  color: #5a3811;
+  font-weight: 600;
   font-size: 1.2rem;
+  z-index: 2;
 }
 
-.ground-control,
-.race-container {
+span {
+  color: white;
+  font-weight: 600;
+}
+
+.mars {
+  position: absolute;
+  transform: translate(12rem, -1.4rem);
+  padding: 7.5rem;
+  border-radius: 50%;
+  background-color: #ce793c;
+  z-index: 1;
+  color: rgba(255, 255, 255, 0);
+  box-shadow: 3px 3px 10px #a07e49;
+}
+
+.ground-control {
   border: 3px solid rgba(110, 74, 15, 0.178);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -56,6 +75,15 @@ body {
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
+}
+
+.race-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 h4 {
@@ -102,6 +130,46 @@ button:hover {
 .rockets-info {
   text-align: center;
   padding: 0;
+}
+
+.fa-rocket {
+  font-size: 6rem;
+  color: #382901;
+  transform: rotate(-45deg);
+  margin-top: 1rem;
+}
+
+.power {
+  border: 3px solid rgba(110, 74, 15, 0.178);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.red-light,
+.orange-light,
+.yellow-light,
+.green-light {
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  color: rgba(255, 255, 255, 0);
+  margin-bottom: 0.2rem;
+}
+
+.red-light {
+  background-color: #dd5b5b;
+}
+
+.orange-light {
+  background-color: #dd9a5b;
+}
+
+.yellow-light {
+  background-color: #ddca5b;
+}
+
+.green-light {
+  background-color: #8bdd5b;
 }
 
 @media only screen and (max-width: 1100px) {

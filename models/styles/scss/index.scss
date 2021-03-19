@@ -30,21 +30,40 @@ body {
   background-color: rgb(236, 214, 143);
   width: 100%;
   padding-bottom: 1rem;
+  z-index: 0;
 }
 .title {
   color: rgb(56, 41, 1);
   font-size: 3rem;
-  margin-bottom: 0
+  margin-bottom: 0;
+  z-index: 2;
 }
 
 .subtitle {
-  color: rgb(110, 74, 15);
+  color: rgb(90, 56, 17);
+  font-weight: 600;
   font-size: 1.2rem;
+  z-index: 2;
+}
+
+span {
+  color: white;
+  font-weight: 600;
+}
+
+.mars {
+  position: absolute;
+  transform: translate(12rem, -1.4rem);
+  padding: 7.5rem;
+  border-radius: 50%;
+  background-color: rgb(206, 121, 60);
+  z-index: 1;
+  color: rgba(255, 255, 255, 0);
+  box-shadow: 3px 3px 10px rgb(160, 126, 73);
 }
 
 // SYSTEM CONTROL
-.ground-control,
-.race-container {
+.ground-control {
   border: 3px solid rgba(110, 74, 15, 0.178);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -59,6 +78,15 @@ body {
   align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
+}
+
+.race-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 h4 {
@@ -104,6 +132,46 @@ button:hover {
   text-align: center;
   padding: 0;
 }
+
+// ICONS
+.fa-rocket {
+  font-size: 6rem;
+  color: rgb(56, 41, 1);
+  transform: rotate(-45deg);
+  margin-top: 1rem;
+}
+
+// POWER INDICATOR
+.power {
+  border: 3px solid rgba(110, 74, 15, 0.178);
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.red-light,
+.orange-light,
+.yellow-light,
+.green-light {
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  color:rgba(255, 255, 255, 0);
+  margin-bottom: 0.2rem;
+}
+
+.red-light {
+  background-color: rgb(221, 91, 91);
+}
+.orange-light {
+  background-color: rgb(221, 154, 91);
+}
+.yellow-light {
+  background-color: rgb(221, 202, 91);
+}
+.green-light {
+  background-color: rgb(139, 221, 91);
+}
+
 
 // MEDIA QUERIES
 @media only screen and (max-width: 1100px) {
