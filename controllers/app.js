@@ -3,12 +3,12 @@ import { ListTemplate } from '../models/classes/listTemplate.js';
 // THE ROCKETS
 var rocketUSA = new Rocket('32WESSDS', [10, 30, 80]);
 var USARocket = document.querySelector('.USA-rocket');
-var USAContainer = document.querySelector('.USA-container');
 var USAPower = document.querySelector('.USA-power');
+var USAContainer = document.querySelector('.USA-container');
 var rocketURSS = new Rocket('LDSFJA32', [30, 40, 50, 50, 30, 10]);
 var URSSRocket = document.querySelector('.URSS-rocket');
-var URSSContainer = document.querySelector('.URSS-container');
 var URSSPower = document.querySelector('.URSS-power');
+var URSSContainer = document.querySelector('.URSS-container');
 var allRockets = [rocketUSA, rocketURSS];
 // OUTPUT
 var ul = document.querySelector('ul');
@@ -28,51 +28,49 @@ launchRockets.forEach(function (target) {
     });
 });
 // Engine
-var boostUSA = document.querySelector('#engine1');
-boostUSA.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!USARocket.classList.contains('hidden')) {
-        rocketUSA.speedUp();
-    }
-    watchUSAPower('boost');
-});
-var boostURSS = document.querySelector('#engine2');
-boostURSS.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (!URSSRocket.classList.contains('hidden')) {
-        rocketURSS.speedUp();
-    }
-    watchURSSPower('boost');
-});
-var chillUSA = document.querySelector('#engine3');
-chillUSA.addEventListener('click', function (e) {
-    e.preventDefault();
-    rocketUSA.slowDown();
-    watchUSAPower('chill');
-});
-var chillURSS = document.querySelector('#engine4');
-chillURSS.addEventListener('click', function (e) {
-    e.preventDefault();
-    rocketURSS.slowDown();
-    watchURSSPower('chill');
+var boostRockets = document.querySelectorAll('.engine-btn');
+boostRockets.forEach(function (target) {
+    target.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (target.id === 'engine1') {
+            if (!USARocket.classList.contains('hidden')) {
+                rocketUSA.speedUp();
+            }
+            watchUSAPower('boost');
+        }
+        else if (target.id === 'engine2') {
+            if (!URSSRocket.classList.contains('hidden')) {
+                rocketURSS.speedUp();
+            }
+            watchURSSPower('boost');
+        }
+        else if (target.id === 'engine3') {
+            rocketUSA.slowDown();
+            watchUSAPower('chill');
+        }
+        else if (target.id === 'engine4') {
+            rocketURSS.slowDown();
+            watchURSSPower('chill');
+        }
+    });
 });
 // Data
-var infoUSA = document.querySelector('#data1');
-infoUSA.addEventListener('click', function (e) {
-    e.preventDefault();
-    output.render(rocketUSA);
+var infoRockets = document.querySelectorAll('.data-btn');
+infoRockets.forEach(function (target) {
+    target.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (target.id === 'data1') {
+            output.render(rocketUSA);
+        }
+        else if (target.id === 'data2') {
+            output.render(rocketURSS);
+        }
+        else if (target.id === 'data3') {
+            output.renderBoth(allRockets);
+        }
+    });
 });
-var infoURSS = document.querySelector('#data2');
-infoURSS.addEventListener('click', function (e) {
-    e.preventDefault();
-    output.render(rocketURSS);
-});
-var infoAll = document.querySelector('#data3');
-infoAll.addEventListener('click', function (e) {
-    e.preventDefault();
-    output.renderBoth(allRockets);
-});
-// ROCKETS CREATION
+// ROCKETS DISPLAY
 function createRocket(country, container, power) {
     if (country.classList.contains('hidden')) {
         country.classList.add('appear');

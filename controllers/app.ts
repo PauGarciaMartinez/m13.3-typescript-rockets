@@ -2,15 +2,15 @@ import { Rocket } from '../models/classes/rocket.js';
 import { ListTemplate } from '../models/classes/listTemplate.js';
 
 // THE ROCKETS
-let rocketUSA: Rocket = new Rocket('32WESSDS', [10, 30, 80]);
+const rocketUSA: Rocket = new Rocket('32WESSDS', [10, 30, 80]);
 const USARocket = document.querySelector('.USA-rocket') as HTMLElement;
-const USAContainer = document.querySelector('.USA-container') as HTMLDivElement;
 const USAPower = document.querySelector('.USA-power') as HTMLDivElement;
+const USAContainer = document.querySelector('.USA-container') as HTMLDivElement;
 
-let rocketURSS: Rocket = new Rocket('LDSFJA32', [30, 40, 50, 50, 30, 10]);
+const rocketURSS: Rocket = new Rocket('LDSFJA32', [30, 40, 50, 50, 30, 10]);
 const URSSRocket = document.querySelector('.URSS-rocket') as HTMLElement;
-const URSSContainer = document.querySelector('.URSS-container') as HTMLDivElement;
 const URSSPower = document.querySelector('.URSS-power') as HTMLDivElement;
+const URSSContainer = document.querySelector('.URSS-container') as HTMLDivElement;
 
 const allRockets: Rocket[] = [rocketUSA, rocketURSS];
 
@@ -33,59 +33,46 @@ launchRockets.forEach(target => {
 })
 
 // Engine
-
-const boostUSA = document.querySelector('#engine1') as HTMLButtonElement;
-boostUSA.addEventListener('click', (e: Event) => {
-  e.preventDefault();
-  if (!USARocket.classList.contains('hidden')) {
-    rocketUSA.speedUp();
-  }
-  watchUSAPower('boost');
-})
-
-const boostURSS = document.querySelector('#engine2') as HTMLButtonElement;
-boostURSS.addEventListener('click', (e: Event) => {
-  e.preventDefault();
-  if (!URSSRocket.classList.contains('hidden')) {
-    rocketURSS.speedUp();
-  }
-  watchURSSPower('boost');
-})
-
-const chillUSA = document.querySelector('#engine3') as HTMLButtonElement;
-chillUSA.addEventListener('click', (e: Event) => {
-  e.preventDefault();
-  rocketUSA.slowDown();
-  watchUSAPower('chill');
-})
-
-const chillURSS = document.querySelector('#engine4') as HTMLButtonElement;
-chillURSS.addEventListener('click', (e: Event) => {
-  e.preventDefault();
-  rocketURSS.slowDown();
-  watchURSSPower('chill');
+const boostRockets = document.querySelectorAll('.engine-btn') as NodeListOf<HTMLButtonElement>;
+boostRockets.forEach(target => {
+  target.addEventListener('click', (e: Event) => { 
+    e.preventDefault();
+    if (target.id === 'engine1') {
+      if (!USARocket.classList.contains('hidden')) {
+        rocketUSA.speedUp();
+      }
+      watchUSAPower('boost');
+    } else if (target.id === 'engine2') {
+      if (!URSSRocket.classList.contains('hidden')) {
+        rocketURSS.speedUp();
+      }
+      watchURSSPower('boost');
+    } else if (target.id === 'engine3') {
+      rocketUSA.slowDown();
+      watchUSAPower('chill');
+    } else if (target.id === 'engine4') {
+      rocketURSS.slowDown();
+      watchURSSPower('chill');
+    }
+  })
 })
 
 // Data
-const infoUSA = document.querySelector('#data1') as HTMLButtonElement;
-infoUSA.addEventListener('click', (e: Event) => {
-  e.preventDefault();
-  output.render(rocketUSA);
+const infoRockets = document.querySelectorAll('.data-btn') as NodeListOf<HTMLButtonElement>;
+infoRockets.forEach(target => {
+  target.addEventListener('click', (e: Event) => { 
+    e.preventDefault();
+    if (target.id === 'data1') {
+      output.render(rocketUSA);
+    } else if (target.id === 'data2') {
+      output.render(rocketURSS);
+    } else if (target.id === 'data3') {
+      output.renderBoth(allRockets);
+    }
+  })
 })
 
-const infoURSS = document.querySelector('#data2') as HTMLButtonElement;
-infoURSS.addEventListener('click', (e: Event) => {
-  e.preventDefault();
-  output.render(rocketURSS);
-})
-
-const infoAll = document.querySelector('#data3') as HTMLButtonElement;
-infoAll.addEventListener('click', (e: Event) => {
-  e.preventDefault();
-  output.renderBoth(allRockets);
-})
-
-// ROCKETS CREATION
+// ROCKETS DISPLAY
 function createRocket(country: HTMLElement, container: HTMLElement, power: HTMLElement): void {
   if (country.classList.contains('hidden')) {
     country.classList.add('appear');
