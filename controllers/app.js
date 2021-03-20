@@ -1,5 +1,6 @@
 import { Rocket } from '../models/classes/rocket.js';
-import { ListTemplate } from '../models/classes/listTemplate.js';
+import { infoTemplate } from '../models/classes/infoTemplate.js';
+import { speedTemplate } from '../models/classes/speedTemplate.js';
 // THE ROCKETS
 var rocketUSA = new Rocket('32WESSDS', [10, 30, 80]);
 var USARocket = document.querySelector('.USA-rocket');
@@ -11,8 +12,10 @@ var URSSPower = document.querySelector('.URSS-power');
 var URSSContainer = document.querySelector('.URSS-container');
 var allRockets = [rocketUSA, rocketURSS];
 // OUTPUT
-var ul = document.querySelector('ul');
-var output = new ListTemplate(ul);
+var rocketsInfo = document.querySelector('.rockets-info');
+var output = new infoTemplate(rocketsInfo);
+var speedAlert = document.querySelectorAll('.speed-alert');
+var speedOutput = new speedTemplate(speedAlert);
 // EVENTS
 // Launcher
 var launchRockets = document.querySelectorAll('.launcher-btn');
@@ -107,6 +110,7 @@ function watchUSAPower(type) {
             redLight.classList.remove('hidden');
             USARocket.classList.remove('movingUSA3');
             USARocket.classList.add('movingUSA4');
+            speedOutput.render(rocketUSA);
         }
     }
     else if (type === 'chill') {

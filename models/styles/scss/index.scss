@@ -87,7 +87,6 @@ span {
   padding: 1rem;
   border-radius: 0.5rem;
   margin-top: 1rem;
-  box-shadow: 3px 3px 10px rgb(231, 218, 197);
 }
 
 .control-container {
@@ -104,7 +103,12 @@ span {
   margin-top: 2rem;
 }
 
-h4 {
+.catch-container {
+  @include flexCC();
+}
+
+h4,
+.speed-alert {
   text-align: center;
 }
 

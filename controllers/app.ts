@@ -1,5 +1,6 @@
 import { Rocket } from '../models/classes/rocket.js';
-import { ListTemplate } from '../models/classes/listTemplate.js';
+import { infoTemplate } from '../models/classes/infoTemplate.js';
+import { speedTemplate } from '../models/classes/speedTemplate.js';
 
 // THE ROCKETS
 const rocketUSA: Rocket = new Rocket('32WESSDS', [10, 30, 80]);
@@ -15,8 +16,10 @@ const URSSContainer = document.querySelector('.URSS-container') as HTMLDivElemen
 const allRockets: Rocket[] = [rocketUSA, rocketURSS];
 
 // OUTPUT
-const ul = document.querySelector('ul') as HTMLUListElement;
-const output = new ListTemplate(ul);
+const rocketsInfo = document.querySelector('.rockets-info') as HTMLUListElement;
+const output = new infoTemplate(rocketsInfo);
+const speedAlert = document.querySelectorAll('.speed-alert') as NodeListOf<HTMLDivElement>;
+const speedOutput = new speedTemplate(speedAlert);
 
 // EVENTS
 // Launcher
@@ -108,6 +111,7 @@ function watchUSAPower(type: string): void {
       redLight.classList.remove('hidden');
       USARocket.classList.remove('movingUSA3');
       USARocket.classList.add('movingUSA4');
+      speedOutput.render(rocketUSA);
     }
   } else if (type === 'chill') {
     if (rocketUSA.increments < 1) {
