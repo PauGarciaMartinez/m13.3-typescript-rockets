@@ -19,6 +19,11 @@ var speedTemplate = /** @class */ (function () {
         }
         this.container.classList.add('full');
     };
+    speedTemplate.prototype.erase = function () {
+        while (this.container.hasChildNodes()) {
+            this.container.removeChild(this.container.firstChild);
+        }
+    };
     return speedTemplate;
 }());
 export { speedTemplate };

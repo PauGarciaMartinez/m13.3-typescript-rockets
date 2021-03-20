@@ -116,12 +116,6 @@ function watchUSAPower(type) {
         else if (rocketUSA.increments > 4) {
             speedUSA.render(rocketUSA);
         }
-        if (rocketUSA.power === rocketUSA.totalPower) {
-            USARocket.classList.add('max-speedUSA');
-        }
-        else {
-            USARocket.classList.remove('max-speedUSA');
-        }
     }
     else if (type === 'chill') {
         if (rocketUSA.increments < 1) {
@@ -143,6 +137,18 @@ function watchUSAPower(type) {
             USARocket.classList.remove('movingUSA4');
             USARocket.classList.add('movingUSA3');
         }
+        else if (rocketUSA.increments === 4) {
+            speedUSA.erase();
+        }
+        else if (rocketUSA.increments > 4) {
+            speedUSA.render(rocketUSA);
+        }
+    }
+    if (rocketUSA.power === rocketUSA.totalPower && rocketUSA.power != 0) {
+        USARocket.classList.add('max-speedUSA');
+    }
+    else {
+        USARocket.classList.remove('max-speedUSA');
     }
 }
 function watchURSSPower(type) {
@@ -173,12 +179,6 @@ function watchURSSPower(type) {
         else if (rocketURSS.increments > 4) {
             speedURSS.render(rocketURSS);
         }
-        if (rocketURSS.power === rocketURSS.totalPower) {
-            URSSRocket.classList.add('max-speedURSS');
-        }
-        else {
-            URSSRocket.classList.remove('max-speedURSS');
-        }
     }
     else if (type === 'chill') {
         if (rocketURSS.increments < 1) {
@@ -200,5 +200,17 @@ function watchURSSPower(type) {
             URSSRocket.classList.remove('movingURSS4');
             URSSRocket.classList.add('movingURSS3');
         }
+        else if (rocketURSS.increments === 4) {
+            speedURSS.erase();
+        }
+        else if (rocketURSS.increments > 4) {
+            speedURSS.render(rocketURSS);
+        }
+    }
+    if (rocketURSS.power === rocketURSS.totalPower && rocketURSS.power != 0) {
+        URSSRocket.classList.add('max-speedURSS');
+    }
+    else {
+        URSSRocket.classList.remove('max-speedURSS');
     }
 }

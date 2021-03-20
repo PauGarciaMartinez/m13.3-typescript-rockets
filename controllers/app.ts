@@ -115,16 +115,10 @@ function watchUSAPower(type: string): void {
       redLight.classList.remove('hidden');
       USARocket.classList.remove('movingUSA3');
       USARocket.classList.add('movingUSA4');
+
     } else if (rocketUSA.increments > 4) {
       speedUSA.render(rocketUSA);
     }
-
-    if (rocketUSA.power === rocketUSA.totalPower) {
-      USARocket.classList.add('max-speedUSA');
-    } else {
-      USARocket.classList.remove('max-speedUSA');
-    }
-
   } else if (type === 'chill') {
     if (rocketUSA.increments < 1) {
       greenLight.classList.add('hidden');
@@ -141,7 +135,16 @@ function watchUSAPower(type: string): void {
       redLight.classList.add('hidden');
       USARocket.classList.remove('movingUSA4');
       USARocket.classList.add('movingUSA3');
+    } else if (rocketUSA.increments === 4) {
+      speedUSA.erase();
+    } else if (rocketUSA.increments > 4) {
+      speedUSA.render(rocketUSA);
     }
+  }
+  if (rocketUSA.power === rocketUSA.totalPower && rocketUSA.power != 0) {
+    USARocket.classList.add('max-speedUSA');
+  } else {
+    USARocket.classList.remove('max-speedUSA');
   }
 }
 
@@ -170,14 +173,6 @@ function watchURSSPower(type: string): void {
     } else if (rocketURSS.increments > 4) {
       speedURSS.render(rocketURSS);
     }
-  
-
-    if (rocketURSS.power === rocketURSS.totalPower) {
-      URSSRocket.classList.add('max-speedURSS');
-    } else {
-      URSSRocket.classList.remove('max-speedURSS');
-    }
-
   } else if (type === 'chill') {
     if (rocketURSS.increments < 1) {
       greenLight.classList.add('hidden');
@@ -194,6 +189,15 @@ function watchURSSPower(type: string): void {
       redLight.classList.add('hidden');
       URSSRocket.classList.remove('movingURSS4');
       URSSRocket.classList.add('movingURSS3');
+    } else if (rocketURSS.increments === 4) {
+      speedURSS.erase();
+    } else if (rocketURSS.increments > 4) {
+      speedURSS.render(rocketURSS);
     }
+  }
+  if (rocketURSS.power === rocketURSS.totalPower && rocketURSS.power != 0) {
+    URSSRocket.classList.add('max-speedURSS');
+  } else {
+    URSSRocket.classList.remove('max-speedURSS');
   }
 }

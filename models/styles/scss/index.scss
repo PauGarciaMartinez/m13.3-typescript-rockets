@@ -272,16 +272,16 @@ button:hover {
   100% { transform: translate3d(0, 20%, 0) rotate(-45deg);}
 }
 @keyframes maxSpeed {
-  0% { color: red; }
-  10% { color: rgb(166, 255, 0); }
-  20% { color: rgb(0, 195, 255); }
-  30% { color: rgb(255, 174, 0); }
-  40% { color: rgb(225, 0, 255); }
-  50% { color: rgb(0, 255, 55); }
-  60% { color: rgb(0, 217, 255); }
-  70% { color: rgb(255, 0, 149); }
-  80% { color: rgb(255, 72, 0); }
-  90% { color: rgb(4, 0, 255); }
+  0% { color: rgb(221, 79, 79); }
+  10% { color: rgb(221, 124, 79); }
+  20% { color: rgb(221, 188, 79); }
+  30% { color: rgb(212, 221, 79); }
+  40% { color: rgb(221, 79, 79); }
+  50% { color: rgb(90, 59, 1); }
+  60% { color: rgb(90, 22, 1); }
+  70% { color: rgb(90, 81, 1); }
+  80% { color: rgb(89, 90, 1); }
+  90% { color: rgb(207, 93, 58); }
 }
 
 // MEDIA QUERIES

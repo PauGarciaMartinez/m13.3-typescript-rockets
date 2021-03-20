@@ -18,8 +18,13 @@ export class speedTemplate {
       const maxSpeed: HTMLParagraphElement = document.createElement('p');
       maxSpeed.innerHTML = `<strong>MAX SPEED</strong>`;
       this.container.append(maxSpeed);
-    }
+    } 
 
     this.container.classList.add('full');
+  }
+  erase() {
+    while (this.container.hasChildNodes()) {  
+      this.container.removeChild(this.container.firstChild!);
+    }
   }
 }
