@@ -108,7 +108,8 @@ span {
 }
 
 h4,
-.speed-alert {
+.alertUSA,
+.alertURSS {
   text-align: center;
 }
 
@@ -241,6 +242,16 @@ button:hover {
   @include movingURSS();
   animation-duration: 0.5s;
 }
+.max-speedUSA {
+  animation-name: movingUSA, maxSpeed;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.max-speedURSS {
+  animation-name: movingURSS, maxSpeed;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
 
 @keyframes appear {
   0% { transform: translate3d(0, 300%, 0); }
@@ -259,6 +270,18 @@ button:hover {
   0% { transform: translate3d(0, 20%, 0) rotate(-45deg); }
   50% { transform: translate3d(0, 0, 0) rotate(-50deg); }
   100% { transform: translate3d(0, 20%, 0) rotate(-45deg);}
+}
+@keyframes maxSpeed {
+  0% { color: red; }
+  10% { color: rgb(166, 255, 0); }
+  20% { color: rgb(0, 195, 255); }
+  30% { color: rgb(255, 174, 0); }
+  40% { color: rgb(225, 0, 255); }
+  50% { color: rgb(0, 255, 55); }
+  60% { color: rgb(0, 217, 255); }
+  70% { color: rgb(255, 0, 149); }
+  80% { color: rgb(255, 72, 0); }
+  90% { color: rgb(4, 0, 255); }
 }
 
 // MEDIA QUERIES

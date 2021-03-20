@@ -3,32 +3,21 @@ var speedTemplate = /** @class */ (function () {
         this.container = container;
     }
     speedTemplate.prototype.render = function (rocket) {
-        this.container.forEach(function (item) {
-            if (item.id === 'speedUSA') {
-                if (item.classList.contains('full')) {
-                    while (item.hasChildNodes()) {
-                        item.removeChild(item.firstChild);
-                    }
-                    item.classList.remove('full');
-                }
-                var speedInfo = document.createElement('p');
-                speedInfo.innerHTML = "<strong>ALERT</strong><br>Current speed: <strong>" + rocket.power + "</strong>";
-                item.append(speedInfo);
-                item.classList.add('full');
+        if (this.container.classList.contains('full')) {
+            while (this.container.hasChildNodes()) {
+                this.container.removeChild(this.container.firstChild);
             }
-            if (item.id === 'speedURSS') {
-                if (item.classList.contains('full')) {
-                    while (item.hasChildNodes()) {
-                        item.removeChild(item.firstChild);
-                    }
-                    item.classList.remove('full');
-                }
-                var speedInfo = document.createElement('p');
-                speedInfo.innerHTML = "<strong>ALERT</strong><br>Current speed: <strong>" + rocket.power + "</strong>";
-                item.append(speedInfo);
-                item.classList.add('full');
-            }
-        });
+            this.container.classList.remove('full');
+        }
+        var speedInfo = document.createElement('p');
+        speedInfo.innerHTML = "<strong>ALERT</strong><br>Current speed: <strong>" + rocket.power + "</strong>";
+        this.container.append(speedInfo);
+        if (rocket.power === rocket.totalPower) {
+            var maxSpeed = document.createElement('p');
+            maxSpeed.innerHTML = "<strong>MAX SPEED</strong>";
+            this.container.append(maxSpeed);
+        }
+        this.container.classList.add('full');
     };
     return speedTemplate;
 }());

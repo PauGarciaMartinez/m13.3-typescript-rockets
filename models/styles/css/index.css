@@ -93,7 +93,8 @@ span {
 }
 
 h4,
-.speed-alert {
+.alertUSA,
+.alertURSS {
   text-align: center;
 }
 
@@ -254,6 +255,18 @@ button:hover {
   animation-duration: 0.5s;
 }
 
+.max-speedUSA {
+  animation-name: movingUSA, maxSpeed;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.max-speedURSS {
+  animation-name: movingURSS, maxSpeed;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 @keyframes appear {
   0% {
     transform: translate3d(0, 300%, 0);
@@ -291,6 +304,38 @@ button:hover {
   }
   100% {
     transform: translate3d(0, 20%, 0) rotate(-45deg);
+  }
+}
+@keyframes maxSpeed {
+  0% {
+    color: red;
+  }
+  10% {
+    color: #a6ff00;
+  }
+  20% {
+    color: #00c3ff;
+  }
+  30% {
+    color: #ffae00;
+  }
+  40% {
+    color: #e100ff;
+  }
+  50% {
+    color: #00ff37;
+  }
+  60% {
+    color: #00d9ff;
+  }
+  70% {
+    color: #ff0095;
+  }
+  80% {
+    color: #ff4800;
+  }
+  90% {
+    color: #0400ff;
   }
 }
 @media only screen and (max-width: 1100px) {

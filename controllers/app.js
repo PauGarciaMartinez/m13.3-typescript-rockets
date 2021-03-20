@@ -14,8 +14,10 @@ var allRockets = [rocketUSA, rocketURSS];
 // OUTPUT
 var rocketsInfo = document.querySelector('.rockets-info');
 var output = new infoTemplate(rocketsInfo);
-var speedAlert = document.querySelectorAll('.speed-alert');
-var speedOutput = new speedTemplate(speedAlert);
+var alertUSA = document.querySelector('.alertUSA');
+var alertURSS = document.querySelector('.alertURSS');
+var speedUSA = new speedTemplate(alertUSA);
+var speedURSS = new speedTemplate(alertURSS);
 // EVENTS
 // Launcher
 var launchRockets = document.querySelectorAll('.launcher-btn');
@@ -106,11 +108,19 @@ function watchUSAPower(type) {
             USARocket.classList.remove('movingUSA2');
             USARocket.classList.add('movingUSA3');
         }
-        else if (rocketUSA.increments > 3) {
+        else if (rocketUSA.increments === 4) {
             redLight.classList.remove('hidden');
             USARocket.classList.remove('movingUSA3');
             USARocket.classList.add('movingUSA4');
-            speedOutput.render(rocketUSA);
+        }
+        else if (rocketUSA.increments > 4) {
+            speedUSA.render(rocketUSA);
+        }
+        if (rocketUSA.power === rocketUSA.totalPower) {
+            USARocket.classList.add('max-speedUSA');
+        }
+        else {
+            USARocket.classList.remove('max-speedUSA');
         }
     }
     else if (type === 'chill') {
@@ -155,10 +165,19 @@ function watchURSSPower(type) {
             URSSRocket.classList.remove('movingURSS2');
             URSSRocket.classList.add('movingURSS3');
         }
-        else if (rocketURSS.increments > 3) {
+        else if (rocketURSS.increments === 4) {
             redLight.classList.remove('hidden');
             URSSRocket.classList.remove('movingURSS3');
             URSSRocket.classList.add('movingURSS4');
+        }
+        else if (rocketURSS.increments > 4) {
+            speedURSS.render(rocketURSS);
+        }
+        if (rocketURSS.power === rocketURSS.totalPower) {
+            URSSRocket.classList.add('max-speedURSS');
+        }
+        else {
+            URSSRocket.classList.remove('max-speedURSS');
         }
     }
     else if (type === 'chill') {

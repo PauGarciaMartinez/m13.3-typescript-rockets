@@ -18,8 +18,12 @@ const allRockets: Rocket[] = [rocketUSA, rocketURSS];
 // OUTPUT
 const rocketsInfo = document.querySelector('.rockets-info') as HTMLUListElement;
 const output = new infoTemplate(rocketsInfo);
-const speedAlert = document.querySelectorAll('.speed-alert') as NodeListOf<HTMLDivElement>;
-const speedOutput = new speedTemplate(speedAlert);
+
+const alertUSA = document.querySelector('.alertUSA') as HTMLDivElement;
+const alertURSS = document.querySelector('.alertURSS') as HTMLDivElement;
+const speedUSA = new speedTemplate(alertUSA);
+const speedURSS = new speedTemplate(alertURSS);
+
 
 // EVENTS
 // Launcher
@@ -107,12 +111,20 @@ function watchUSAPower(type: string): void {
       orangeLight.classList.remove('hidden');
       USARocket.classList.remove('movingUSA2');
       USARocket.classList.add('movingUSA3');
-    } else if (rocketUSA.increments > 3) {
+    } else if (rocketUSA.increments === 4) {
       redLight.classList.remove('hidden');
       USARocket.classList.remove('movingUSA3');
       USARocket.classList.add('movingUSA4');
-      speedOutput.render(rocketUSA);
+    } else if (rocketUSA.increments > 4) {
+      speedUSA.render(rocketUSA);
     }
+
+    if (rocketUSA.power === rocketUSA.totalPower) {
+      USARocket.classList.add('max-speedUSA');
+    } else {
+      USARocket.classList.remove('max-speedUSA');
+    }
+
   } else if (type === 'chill') {
     if (rocketUSA.increments < 1) {
       greenLight.classList.add('hidden');
@@ -151,11 +163,21 @@ function watchURSSPower(type: string): void {
       orangeLight.classList.remove('hidden');
       URSSRocket.classList.remove('movingURSS2');
       URSSRocket.classList.add('movingURSS3');
-    } else if (rocketURSS.increments > 3) {
+    } else if (rocketURSS.increments === 4) {
       redLight.classList.remove('hidden');
       URSSRocket.classList.remove('movingURSS3');
       URSSRocket.classList.add('movingURSS4');
+    } else if (rocketURSS.increments > 4) {
+      speedURSS.render(rocketURSS);
     }
+  
+
+    if (rocketURSS.power === rocketURSS.totalPower) {
+      URSSRocket.classList.add('max-speedURSS');
+    } else {
+      URSSRocket.classList.remove('max-speedURSS');
+    }
+
   } else if (type === 'chill') {
     if (rocketURSS.increments < 1) {
       greenLight.classList.add('hidden');
