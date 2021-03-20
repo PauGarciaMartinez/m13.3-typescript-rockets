@@ -10,7 +10,7 @@ var ListTemplate = /** @class */ (function () {
             this.container.classList.remove('full');
         }
         var rocketInfo = document.createElement('p');
-        rocketInfo.innerHTML = "Rocket <strong>" + rocket.id + "</strong> boosters max speed: <strong>" + rocket.boosters.toString() + "</strong>";
+        rocketInfo.innerHTML = "Rocket <strong>" + rocket.id + "</strong> boosters max speed: <strong>" + rocket.boosters.toString() + "</strong>. <br>Actual speed: <strong>" + rocket.power + "</strong>";
         this.container.append(rocketInfo);
         this.container.classList.add('full');
     };
@@ -24,7 +24,7 @@ var ListTemplate = /** @class */ (function () {
         }
         rocket.forEach(function (rocket) {
             var rocketInfo = document.createElement('p');
-            rocketInfo.innerHTML = "Rocket <strong>" + rocket.id + "</strong> boosters max speed: <strong>" + rocket.boosters.toString() + "</strong>";
+            rocketInfo.innerHTML = "Rocket <strong>" + rocket.id + "</strong> boosters max speed: <strong>" + rocket.boosters.toString() + "</strong>. <br>Actual speed: <strong>" + rocket.power + "</strong>";
             _this.container.append(rocketInfo);
         });
         this.container.classList.add('full');

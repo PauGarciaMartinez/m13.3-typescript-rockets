@@ -13,7 +13,7 @@ export class ListTemplate {
     }
 
     const rocketInfo: HTMLParagraphElement = document.createElement('p');
-    rocketInfo.innerHTML = `Rocket <strong>${rocket.id}</strong> boosters max speed: <strong>${rocket.boosters.toString()}</strong>`;
+    rocketInfo.innerHTML = `Rocket <strong>${rocket.id}</strong> boosters max speed: <strong>${rocket.boosters.toString()}</strong>. <br>Actual speed: <strong>${rocket.power}</strong>`;
 
     this.container.append(rocketInfo);
     this.container.classList.add('full');
@@ -29,7 +29,7 @@ export class ListTemplate {
 
     rocket.forEach(rocket => {
       const rocketInfo: HTMLParagraphElement = document.createElement('p');
-      rocketInfo.innerHTML = `Rocket <strong>${rocket.id}</strong> boosters max speed: <strong>${rocket.boosters.toString()}</strong>`;
+      rocketInfo.innerHTML = `Rocket <strong>${rocket.id}</strong> boosters max speed: <strong>${rocket.boosters.toString()}</strong>. <br>Actual speed: <strong>${rocket.power}</strong>`;
   
       this.container.append(rocketInfo);
     })
