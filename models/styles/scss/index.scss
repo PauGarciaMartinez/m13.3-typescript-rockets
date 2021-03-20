@@ -21,6 +21,8 @@
   animation-timing-function: linear;
 }
 
+/////////////////////////////////////////////////////////////////
+
 // GLOBAL
 html, 
 body {
@@ -152,6 +154,7 @@ button:hover {
   color: rgb(56, 41, 1);
   transform: rotate(-45deg);
   margin-top: 1rem;
+  text-shadow: 3px 3px 10px rgb(224, 210, 175);
 }
 
 // POWER INDICATOR

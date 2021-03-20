@@ -3,22 +3,29 @@ import { ListTemplate } from '../models/classes/listTemplate.js';
 // THE ROCKETS
 var rocketUSA = new Rocket('32WESSDS', [10, 30, 80]);
 var USARocket = document.querySelector('.USA-rocket');
+var USAContainer = document.querySelector('.USA-container');
+var USAPower = document.querySelector('.USA-power');
 var rocketURSS = new Rocket('LDSFJA32', [30, 40, 50, 50, 30, 10]);
 var URSSRocket = document.querySelector('.URSS-rocket');
+var URSSContainer = document.querySelector('.URSS-container');
+var URSSPower = document.querySelector('.URSS-power');
+var allRockets = [rocketUSA, rocketURSS];
 // OUTPUT
 var ul = document.querySelector('ul');
 var output = new ListTemplate(ul);
 // EVENTS
 // Launcher
-var launchUSA = document.querySelector('#launch1');
-launchUSA.addEventListener('click', function (e) {
-    e.preventDefault();
-    createUSARocket();
-});
-var launchURSS = document.querySelector('#launch2');
-launchURSS.addEventListener('click', function (e) {
-    e.preventDefault();
-    createURSSRocket();
+var launchRockets = document.querySelectorAll('.launcher-btn');
+launchRockets.forEach(function (target) {
+    target.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (target.id === 'launch1') {
+            createRocket(USARocket, USAContainer, USAPower);
+        }
+        else if (target.id === 'launch2') {
+            createRocket(URSSRocket, URSSContainer, URSSPower);
+        }
+    });
 });
 // Engine
 var boostUSA = document.querySelector('#engine1');
@@ -28,7 +35,6 @@ boostUSA.addEventListener('click', function (e) {
         rocketUSA.speedUp();
     }
     watchUSAPower('boost');
-    console.log(rocketUSA.power);
 });
 var boostURSS = document.querySelector('#engine2');
 boostURSS.addEventListener('click', function (e) {
@@ -37,21 +43,18 @@ boostURSS.addEventListener('click', function (e) {
         rocketURSS.speedUp();
     }
     watchURSSPower('boost');
-    console.log(rocketURSS.power);
 });
 var chillUSA = document.querySelector('#engine3');
 chillUSA.addEventListener('click', function (e) {
     e.preventDefault();
     rocketUSA.slowDown();
     watchUSAPower('chill');
-    console.log(rocketUSA.power);
 });
 var chillURSS = document.querySelector('#engine4');
 chillURSS.addEventListener('click', function (e) {
     e.preventDefault();
     rocketURSS.slowDown();
     watchURSSPower('chill');
-    console.log(rocketURSS.power);
 });
 // Data
 var infoUSA = document.querySelector('#data1');
@@ -67,37 +70,21 @@ infoURSS.addEventListener('click', function (e) {
 var infoAll = document.querySelector('#data3');
 infoAll.addEventListener('click', function (e) {
     e.preventDefault();
-    var allRockets = [rocketUSA, rocketURSS];
     output.renderBoth(allRockets);
 });
 // ROCKETS CREATION
-function createUSARocket() {
-    var USAContainer = document.querySelector('.USA-container');
-    var USAPower = document.querySelector('.USA-power');
-    if (USARocket.classList.contains('hidden')) {
-        USARocket.classList.add('appear');
+function createRocket(country, container, power) {
+    if (country.classList.contains('hidden')) {
+        country.classList.add('appear');
     }
-    if (USAPower.classList.contains('hidden')) {
-        USAPower.classList.add('appear2');
+    if (power.classList.contains('hidden')) {
+        power.classList.add('appear2');
     }
-    USAContainer.classList.remove('hidden');
-    USARocket.classList.remove('hidden');
-    USAPower.classList.remove('hidden');
+    container.classList.remove('hidden');
+    country.classList.remove('hidden');
+    power.classList.remove('hidden');
 }
-function createURSSRocket() {
-    var URSSContainer = document.querySelector('.URSS-container');
-    var URSSPower = document.querySelector('.URSS-power');
-    if (URSSRocket.classList.contains('hidden')) {
-        URSSRocket.classList.add('appear');
-    }
-    if (URSSPower.classList.contains('hidden')) {
-        URSSPower.classList.add('appear2');
-    }
-    URSSContainer.classList.remove('hidden');
-    URSSRocket.classList.remove('hidden');
-    URSSPower.classList.remove('hidden');
-}
-// POWER CREATION
+// POWER DISPLAY
 function watchUSAPower(type) {
     var greenLight = document.querySelector('#USAgreen');
     var yellowLight = document.querySelector('#USAyellow');

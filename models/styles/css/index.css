@@ -137,6 +137,7 @@ button:hover {
   color: #382901;
   transform: rotate(-45deg);
   margin-top: 1rem;
+  text-shadow: 3px 3px 10px #e0d2af;
 }
 
 .power {
