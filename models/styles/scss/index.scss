@@ -1,3 +1,26 @@
+// MIXINS
+@mixin flexCC {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexRC {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+@mixin movingUSA {
+  animation-name: movingUSA;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@mixin movingURSS{
+  animation-name: movingURSS;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 // GLOBAL
 html, 
 body {
@@ -8,10 +31,7 @@ body {
 
 // LAYOUT
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flexCC();
   gap: 1rem;
 }
 
@@ -23,10 +43,7 @@ body {
 
 // HEADER
 .header-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flexCC();
   background-color: rgb(236, 214, 143);
   width: 100%;
   padding-bottom: 1rem;
@@ -72,19 +89,15 @@ span {
 }
 
 .control-container {
-  display: flex;
-  flex-direction: row;
+  @include flexRC();
   justify-content: center;
-  align-items: center;
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
 .race-container {
-  display: flex;
-  flex-direction: row;
+  @include flexRC();
   justify-content: space-around;
-  align-items: center;
   gap: 1rem;
   margin-top: 2rem;
 }
@@ -190,34 +203,36 @@ button:hover {
   animation-duration: 1s;
 }
 .movingUSA {
-  animation-name: movingUSA;
+  @include movingUSA;
   animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
 }
 .movingUSA2 {
-  animation-name: movingUSA;
+  @include movingUSA();
   animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
 }
 .movingUSA3 {
-  animation-name: movingUSA;
+  @include movingUSA();
   animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
 }
 .movingUSA4 {
-  animation-name: movingUSA;
+  @include movingUSA();
   animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
 }
 .movingURSS {
-  animation-name: moving2;
+  @include movingURSS();
   animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+}
+.movingURSS2 {
+  @include movingURSS();
+  animation-duration: 2s;
+}
+.movingURSS3 {
+  @include movingURSS();
+  animation-duration: 1s;
+}
+.movingURSS4 {
+  @include movingURSS();
+  animation-duration: 0.5s;
 }
 
 @keyframes appear {

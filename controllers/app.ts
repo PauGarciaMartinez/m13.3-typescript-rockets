@@ -141,12 +141,19 @@ function watchUSAPower(type: string): void {
   } else if (type === 'chill') {
     if (rocketUSA.increments < 1) {
       greenLight.classList.add('hidden');
+      USARocket.classList.remove('movingUSA');
     } else if (rocketUSA.increments === 1) {
       yellowLight.classList.add('hidden');
+      USARocket.classList.remove('movingUSA2');
+      USARocket.classList.add('movingUSA');
     } else if (rocketUSA.increments === 2) {
       orangeLight.classList.add('hidden');
+      USARocket.classList.remove('movingUSA3');
+      USARocket.classList.add('movingUSA2');
     } else if (rocketUSA.increments === 3) {
       redLight.classList.add('hidden');
+      USARocket.classList.remove('movingUSA4');
+      USARocket.classList.add('movingUSA3');
     }
   }
 }
@@ -160,23 +167,36 @@ function watchURSSPower(type: string): void {
   if (type === 'boost') {
     if (rocketURSS.increments === 1) {
       greenLight.classList.remove('hidden');
-      URSSRocket.classList.add('movingURSS')
+      URSSRocket.classList.add('movingURSS');
     } else if (rocketURSS.increments === 2) {
       yellowLight.classList.remove('hidden');
+      URSSRocket.classList.remove('movingURSS');
+      URSSRocket.classList.add('movingURSS2');
     } else if (rocketURSS.increments === 3) {
       orangeLight.classList.remove('hidden');
+      URSSRocket.classList.remove('movingURSS2');
+      URSSRocket.classList.add('movingURSS3');
     } else if (rocketURSS.increments > 3) {
       redLight.classList.remove('hidden');
+      URSSRocket.classList.remove('movingURSS3');
+      URSSRocket.classList.add('movingURSS4');
     }
   } else if (type === 'chill') {
     if (rocketURSS.increments < 1) {
       greenLight.classList.add('hidden');
+      URSSRocket.classList.remove('movingURSS');
     } else if (rocketURSS.increments === 1) {
       yellowLight.classList.add('hidden');
+      URSSRocket.classList.remove('movingURSS2');
+      URSSRocket.classList.add('movingURSS');
     } else if (rocketURSS.increments === 2) {
       orangeLight.classList.add('hidden');
+      URSSRocket.classList.remove('movingURSS3');
+      URSSRocket.classList.add('movingURSS2');
     } else if (rocketURSS.increments === 3) {
       redLight.classList.add('hidden');
+      URSSRocket.classList.remove('movingURSS4');
+      URSSRocket.classList.add('movingURSS3');
     }
   }
 }
