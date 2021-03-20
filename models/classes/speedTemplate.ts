@@ -16,6 +16,7 @@ export class speedTemplate {
 
     if (rocket.power === rocket.totalPower) {
       const maxSpeed: HTMLParagraphElement = document.createElement('p');
+      maxSpeed.classList.add('alert-max');
       maxSpeed.innerHTML = `<strong>MAX SPEED</strong>`;
       this.container.append(maxSpeed);
     } 

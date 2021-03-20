@@ -252,6 +252,16 @@ button:hover {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+.alert-max {
+  background-color: rgb(73, 51, 12);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  animation-name: wobble;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
 
 @keyframes appear {
   0% { transform: translate3d(0, 300%, 0); }
@@ -282,6 +292,18 @@ button:hover {
   70% { color: rgb(90, 81, 1); }
   80% { color: rgb(89, 90, 1); }
   90% { color: rgb(207, 93, 58); }
+}
+@keyframes wobble {
+  0% { transform: translateX(0px); }
+  10% { transform: translateX(4px); }
+  20% { transform: translateX(-4px); }
+  30% { transform: translateX(4px); }
+  50% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  70% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  90% { transform: translateX(-4px); }
+  100% { transform: translateX(0px); }
 }
 
 // MEDIA QUERIES
