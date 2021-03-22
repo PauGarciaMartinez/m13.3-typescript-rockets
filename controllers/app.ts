@@ -48,18 +48,18 @@ boostRockets.forEach(target => {
       if (!USARocket.classList.contains('hidden')) {
         rocketUSA.speedUp();
       }
-      watchUSAPower('boost');
+      watchPower(rocketUSA, 'boost');
     } else if (target.id === 'engine2') {
       if (!URSSRocket.classList.contains('hidden')) {
         rocketURSS.speedUp();
       }
-      watchURSSPower('boost');
+      watchURSSPower(rocketURSS, 'boost');
     } else if (target.id === 'engine3') {
       rocketUSA.slowDown();
-      watchUSAPower('chill');
+      watchPower(rocketURSS, 'chill');
     } else if (target.id === 'engine4') {
       rocketURSS.slowDown();
-      watchURSSPower('chill');
+      watchURSSPower(rocketURSS, 'chill');
     }
   })
 })
@@ -93,48 +93,39 @@ function createRocket(country: HTMLElement, container: HTMLElement, power: HTMLE
 }
 
 // POWER DISPLAY
-function watchUSAPower(type: string): void {
+function watchPower(rocket: Rocket, type: string): void {
   const greenLight = document.querySelector('#USAgreen') as HTMLDivElement;
   const yellowLight = document.querySelector('#USAyellow') as HTMLDivElement;
   const orangeLight = document.querySelector('#USAorange') as HTMLDivElement;
   const redLight = document.querySelector('#USAred') as HTMLDivElement;
+  
+  const greenLight2 = document.querySelector('#URSSgreen') as HTMLDivElement;
+  const yellowLight2 = document.querySelector('#URSSyellow') as HTMLDivElement;
+  const orangeLight2 = document.querySelector('#URSSorange') as HTMLDivElement;
+  const redLight2 = document.querySelector('#URSSred') as HTMLDivElement;
 
   if (type === 'boost') {
-    if (rocketUSA.increments === 1) {
-      greenLight.classList.remove('hidden');
-      USARocket.classList.add('movingUSA');
+    if (rocket.increments === 1) {
+      watchRocket('BOOST', greenLight, 'hidden', USARocket, 'movingUSA'); 
     } else if (rocketUSA.increments === 2) {
-      yellowLight.classList.remove('hidden');
-      USARocket.classList.remove('movingUSA');
-      USARocket.classList.add('movingUSA2');
+      watchRocket('BOOST', yellowLight, 'hidden', USARocket, 'movingUSA2', USARocket, 'movingUSA'); 
     } else if (rocketUSA.increments === 3) {
-      orangeLight.classList.remove('hidden');
-      USARocket.classList.remove('movingUSA2');
-      USARocket.classList.add('movingUSA3');
+      watchRocket('BOOST', orangeLight, 'hidden', USARocket, 'movingUSA3', USARocket, 'movingUSA2'); 
     } else if (rocketUSA.increments === 4) {
-      redLight.classList.remove('hidden');
-      USARocket.classList.remove('movingUSA3');
-      USARocket.classList.add('movingUSA4');
+      watchRocket('BOOST', redLight, 'hidden', USARocket, 'movingUSA4', USARocket, 'movingUSA3'); 
 
-    } else if (rocketUSA.increments > 4) {
+    } else if (rocket.increments > 4) {
       speedUSA.render(rocketUSA);
     }
   } else if (type === 'chill') {
     if (rocketUSA.increments < 1) {
-      greenLight.classList.add('hidden');
-      USARocket.classList.remove('movingUSA');
+      watchRocket('CHILL', greenLight, 'hidden', USARocket, 'movingUSA'); 
     } else if (rocketUSA.increments === 1) {
-      yellowLight.classList.add('hidden');
-      USARocket.classList.remove('movingUSA2');
-      USARocket.classList.add('movingUSA');
+      watchRocket('CHILL', yellowLight, 'hidden', USARocket, 'movingUSA2', USARocket, 'movingUSA'); 
     } else if (rocketUSA.increments === 2) {
-      orangeLight.classList.add('hidden');
-      USARocket.classList.remove('movingUSA3');
-      USARocket.classList.add('movingUSA2');
+      watchRocket('CHILL', orangeLight, 'hidden', USARocket, 'movingUSA3', USARocket, 'movingUSA2');
     } else if (rocketUSA.increments === 3) {
-      redLight.classList.add('hidden');
-      USARocket.classList.remove('movingUSA4');
-      USARocket.classList.add('movingUSA3');
+      watchRocket('CHILL', redLight, 'hidden', USARocket, 'movingUSA4', USARocket, 'movingUSA3');
     } else if (rocketUSA.increments === 4) {
       speedUSA.erase();
     } else if (rocketUSA.increments > 4) {
@@ -148,47 +139,34 @@ function watchUSAPower(type: string): void {
   }
 }
 
-function watchURSSPower(type: string): void {
+function watchURSSPower(rocket: Rocket, type: string): void {
   const greenLight = document.querySelector('#URSSgreen') as HTMLDivElement;
   const yellowLight = document.querySelector('#URSSyellow') as HTMLDivElement;
   const orangeLight = document.querySelector('#URSSorange') as HTMLDivElement;
   const redLight = document.querySelector('#URSSred') as HTMLDivElement;
 
   if (type === 'boost') {
-    if (rocketURSS.increments === 1) {
-      greenLight.classList.remove('hidden');
-      URSSRocket.classList.add('movingURSS');
+    if (rocket.increments === 1) {
+      watchRocket('BOOST', greenLight, 'hidden', URSSRocket, 'movingURSS'); 
     } else if (rocketURSS.increments === 2) {
-      yellowLight.classList.remove('hidden');
-      URSSRocket.classList.remove('movingURSS');
-      URSSRocket.classList.add('movingURSS2');
+      watchRocket('BOOST', yellowLight, 'hidden', URSSRocket, 'movingURSS2', URSSRocket, 'movingURSS'); 
     } else if (rocketURSS.increments === 3) {
-      orangeLight.classList.remove('hidden');
-      URSSRocket.classList.remove('movingURSS2');
-      URSSRocket.classList.add('movingURSS3');
+      watchRocket('BOOST', orangeLight, 'hidden', URSSRocket, 'movingURSS3', URSSRocket, 'movingURSS2'); 
     } else if (rocketURSS.increments === 4) {
-      redLight.classList.remove('hidden');
-      URSSRocket.classList.remove('movingURSS3');
-      URSSRocket.classList.add('movingURSS4');
-    } else if (rocketURSS.increments > 4) {
+      watchRocket('BOOST', redLight, 'hidden', URSSRocket, 'movingURSS4', URSSRocket, 'movingURSS3'); 
+
+    } else if (rocket.increments > 4) {
       speedURSS.render(rocketURSS);
     }
   } else if (type === 'chill') {
     if (rocketURSS.increments < 1) {
-      greenLight.classList.add('hidden');
-      URSSRocket.classList.remove('movingURSS');
+      watchRocket('CHILL', greenLight, 'hidden', URSSRocket, 'movingURSS'); 
     } else if (rocketURSS.increments === 1) {
-      yellowLight.classList.add('hidden');
-      URSSRocket.classList.remove('movingURSS2');
-      URSSRocket.classList.add('movingURSS');
+      watchRocket('CHILL', yellowLight, 'hidden', URSSRocket, 'movingURSS2', URSSRocket, 'movingURSS'); 
     } else if (rocketURSS.increments === 2) {
-      orangeLight.classList.add('hidden');
-      URSSRocket.classList.remove('movingURSS3');
-      URSSRocket.classList.add('movingURSS2');
+      watchRocket('CHILL', orangeLight, 'hidden', URSSRocket, 'movingURSS3', URSSRocket, 'movingURSS2'); 
     } else if (rocketURSS.increments === 3) {
-      redLight.classList.add('hidden');
-      URSSRocket.classList.remove('movingURSS4');
-      URSSRocket.classList.add('movingURSS3');
+      watchRocket('CHILL', redLight, 'hidden', URSSRocket, 'movingURSS4', URSSRocket, 'movingURSS3'); 
     } else if (rocketURSS.increments === 4) {
       speedURSS.erase();
     } else if (rocketURSS.increments > 4) {
@@ -199,5 +177,19 @@ function watchURSSPower(type: string): void {
     URSSRocket.classList.add('max-speedURSS');
   } else {
     URSSRocket.classList.remove('max-speedURSS');
+  }
+}
+
+function watchRocket(type: string, colorLight: HTMLDivElement, visibility: string, rocket: HTMLElement, animation: string, rocket2?: HTMLElement, animation2?: string) {
+  if (type === 'BOOST') {
+    colorLight.classList.remove(visibility);
+    rocket.classList.add(animation);
+    // Optional
+    rocket2!.classList.remove(animation2!);
+  } else if (type === 'CHILL') {
+    colorLight.classList.add(visibility);
+    rocket.classList.remove(animation);
+    // Optional
+    rocket2!.classList.add(animation2!);
   }
 }

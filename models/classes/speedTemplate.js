@@ -3,27 +3,17 @@ var speedTemplate = /** @class */ (function () {
         this.container = container;
     }
     speedTemplate.prototype.render = function (rocket) {
-        if (this.container.classList.contains('full')) {
-            while (this.container.hasChildNodes()) {
-                this.container.removeChild(this.container.firstChild);
-            }
-            this.container.classList.remove('full');
-        }
-        var speedInfo = document.createElement('p');
-        speedInfo.innerHTML = "<strong>ALERT</strong><br>Current speed: <strong>" + rocket.power + "</strong>";
-        this.container.append(speedInfo);
+        this.container.innerHTML = '';
+        this.container.innerHTML = "<p><strong>ALERT</strong><br>Current speed: <strong>" + rocket.power + "</strong></p>";
         if (rocket.power === rocket.totalPower) {
             var maxSpeed = document.createElement('p');
             maxSpeed.classList.add('alert-max');
             maxSpeed.innerHTML = "<strong>MAX SPEED</strong>";
             this.container.append(maxSpeed);
         }
-        this.container.classList.add('full');
     };
     speedTemplate.prototype.erase = function () {
-        while (this.container.hasChildNodes()) {
-            this.container.removeChild(this.container.firstChild);
-        }
+        this.container.innerHTML = '';
     };
     return speedTemplate;
 }());
